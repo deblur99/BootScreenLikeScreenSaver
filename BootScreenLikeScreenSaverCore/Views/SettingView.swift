@@ -13,9 +13,13 @@ struct SettingView: View {
     
     // Stepper 이전 값 저장을 위한 변수
     @State private var currentDuration: Double = ConfigurationManager.initialDuration
+    @State private var currentMouseHidingTimeout: Double = ConfigurationManager.initialMouseHidingTimeout
 
     var durationString: String {
         "\(String(lroundl(configurationManager.duration)))분"
+    }
+    var mouseHidingTimeoutString: String {
+        "\(String(lroundl(configurationManager.mouseHidingTimeout)))초"
     }
 
     var body: some View {
@@ -34,13 +38,12 @@ struct SettingView: View {
                     HStack {
                         Text(durationString)
                             .frame(maxWidth: 50)
-//                            .multilineTextAlignment(.leading)
 
-                        Slider(value: $configurationManager.duration, in: ConfigurationManager.timerBarRange)
+                        Slider(value: $configurationManager.duration, in: ConfigurationManager.durationTimerBarRange)
                         
                         Stepper("", value: $configurationManager.duration)
                             .onChange(of: configurationManager.duration) { newValue in
-                                guard ConfigurationManager.timerBarRange ~= newValue else {
+                                guard ConfigurationManager.durationTimerBarRange ~= newValue else {
                                     configurationManager.duration = self.currentDuration
                                     return
                                 }
@@ -99,6 +102,32 @@ struct SettingView: View {
                     #else
                     .pickerStyle(.inline)
                     #endif
+                    .listRowSeparator(.hidden)
+                }
+                .padding(.bottom, 32)
+            }
+            
+            Section("화면 보호기 중 마우스 커서 숨김 시간") {
+                VStack(alignment: .leading, spacing: 20.0) {
+                    Text("화면 보호기가 켜져 있는 동안, 몇 초 동안 마우스 커서의 움직임이 없으면 숨길지 결정합니다.")
+                        .lineLimit(nil)
+                    
+                    HStack {
+                        Text(mouseHidingTimeoutString)
+                            .frame(maxWidth: 50)
+                        
+                        Slider(value: $configurationManager.mouseHidingTimeout, in: ConfigurationManager.mouseHidingTimerBarRange)
+                        
+                        Stepper("", value: $configurationManager.mouseHidingTimeout)
+                            .onChange(of: configurationManager.mouseHidingTimeout) { newValue in
+                                guard ConfigurationManager.mouseHidingTimerBarRange ~= newValue else {
+                                    configurationManager.mouseHidingTimeout = self.currentMouseHidingTimeout
+                                    return
+                                }
+                                self.currentMouseHidingTimeout = newValue
+                            }
+                            .frame(maxWidth: 20)
+                    }
                     .listRowSeparator(.hidden)
                 }
                 .padding(.bottom, 32)
