@@ -33,7 +33,6 @@ struct MouseTrackerView: NSViewRepresentable {
                 guard let location = event.window?.contentView?.convert(event.locationInWindow, from: nil) else {
                     return event
                 }
-                let screenHeight = NSScreen.main?.frame.height ?? 0
 
                 // 마우스 y축 좌표가 100 이내일 때 "isMouseOnTop" 메시지 전송
                 if location.y <= detectionHeight {

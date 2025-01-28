@@ -12,11 +12,14 @@ import UIKit
 #endif
 
 class ConfigurationManager: ObservableObject {
-    static let initialDuration: Double = 3.0 // 초기 설정값
-    static let timerBarRange: ClosedRange<Double> = 1 ... 200 // 범위
+    static let initialDuration: Double = 3.0
+    static let durationTimerBarRange: ClosedRange<Double> = 1 ... 200
+    static let initialMouseHidingTimeout: Double = 1.0
+    static let mouseHidingTimerBarRange: ClosedRange<Double> = 1 ... 5
     
     // SettingView에서 변경되는 속성값
     @Published var duration: Double = initialDuration
+    @Published var mouseHidingTimeout: Double = initialMouseHidingTimeout
     @Published var actionWhenFinish: ActionWhenFinish = .repeat
     @Published var usingCircularProgressView: Bool = true
     
@@ -33,7 +36,7 @@ class ConfigurationManager: ObservableObject {
         guard durationInSeconds > 0, elapsedTime > 0 else {
             return 0.0
         }
-        let unit = ConfigurationManager.timerBarRange.upperBound / durationInSeconds
+        let unit = ConfigurationManager.durationTimerBarRange.upperBound / durationInSeconds
         return elapsedTime * unit
     }
     

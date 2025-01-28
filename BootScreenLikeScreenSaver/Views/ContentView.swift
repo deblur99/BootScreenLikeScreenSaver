@@ -12,6 +12,8 @@ struct ContentView: View {
 
     @State private var isShowingSettingsRightSidebar = true
     @State private var isFullScreen = false
+    
+    @State private var mouseTimer: Timer?
 
     var body: some View {
         NavigationStack {
@@ -60,11 +62,13 @@ struct ContentView: View {
             .onReceive(NotificationCenter.default.publisher(for: NSWindow.didEnterFullScreenNotification)) { _ in
                 isFullScreen = true
                 isShowingSettingsRightSidebar = false
+                startMouseHiding()  // 전체화면 시 마우스 숨김
             }
             .onReceive(NotificationCenter.default.publisher(for: NSWindow.didExitFullScreenNotification)) { _ in
                 isFullScreen = false
                 isShowingSettingsRightSidebar = true
                 configurationManager.resetTimer()
+                stopMouseHiding()  // 전체화면 시 마우스 보임
             }
             // ctrl + cmd + f 단축키 이벤트 처리
             .onReceive(NotificationCenter.default.publisher(for: .toggleFullScreen)) { _ in
@@ -80,7 +84,6 @@ struct ContentView: View {
             }
 
             // environmentObject
-            // TODO: 전체화면 중 마우스로 툴바 영역 가리킬 시 툴바 표시하기
             .environmentObject(configurationManager)
         }
     }
@@ -89,6 +92,37 @@ struct ContentView: View {
         withAnimation(.spring(duration: AppConfiguration.durationOfFading)) {
             isShowingSettingsRightSidebar.toggle()
         }
+    }
+    
+    // MARK: - 마우스 커서 숨기기 메서드
+    
+    // 마우스를 움직이면 마우스 커서를 보이고, 일정 시간 동안 움직임이 없으면 마우스 커서를 다시 숨김
+    private func startMouseHiding() {
+        NSEvent.addLocalMonitorForEvents(matching: [.mouseMoved]) { event in
+            self.resetMouseHidingTimer()
+            return event
+        }
+        
+        resetMouseHidingTimer() // 타이머 시작
+    }
+    
+    // 기존 타이머 해제 -> 2초 타이머 새로 걺 -> 커서 표시
+    private func resetMouseHidingTimer() {
+        mouseTimer?.invalidate()
+        
+        // 2초 동안 움직임이 없으면 마우스 커서 숨김
+        mouseTimer = Timer.scheduledTimer(withTimeInterval: configurationManager.mouseHidingTimeout, repeats: false) { _ in
+            NSCursor.hide()
+        }
+        
+        // 즉시 커서 표시
+        NSCursor.unhide()
+    }
+    
+    // 뷰 사라지면 타이머 정리하고 커서도 표시함
+    private func stopMouseHiding() {
+        mouseTimer?.invalidate()
+        NSCursor.unhide()
     }
 }
 

@@ -16,10 +16,11 @@ extension NSNotification.Name {
 
 @main
 struct BootScreenLikeScreenSaverApp: App {
+    @Environment(\.openWindow) private var openWindow
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-//                .windowFullScreenBehavior(.automatic)
                 .frame(
                     minWidth: AppConfiguration.defaultWindowSize.width,
                     minHeight: AppConfiguration.defaultWindowSize.height
@@ -31,11 +32,33 @@ struct BootScreenLikeScreenSaverApp: App {
                 }
         }
         .commands {
+            CommandGroup(replacing: .appInfo) {
+                Button(AppConfiguration.aboutTitle) {
+                    self.openWindow(id: "about")
+                }
+            }
+
             CommandGroup(after: .appSettings) {
                 self.getCommandButton(from: .openSettings)
                 self.getCommandButton(from: .toggleFullScreen)
             }
         }
+
+        Window(AppConfiguration.aboutTitle, id: "about") {
+            AboutView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // 콘텐츠 크기 설정
+                .onAppear {
+                    DispatchQueue.main.async {
+                        if let aboutWindow = NSApplication.shared.windows.last {
+                            aboutWindow.setContentSize(NSSize(width: 400, height: 250)) // 초기 크기
+                            aboutWindow.styleMask.remove(.resizable) // 크기 조정 방지
+                            aboutWindow.standardWindowButton(.zoomButton)?.isHidden = true // 최대화 버튼 비활성화
+                            aboutWindow.isMovableByWindowBackground = true // 창 제목을 제외한 배경으로 이동 가능
+                        }
+                    }
+                }
+        }
+        .defaultSize(width: 400, height: 250)
     }
 
     private func getCommandButton(from notificationName: NSNotification.Name) -> some View {

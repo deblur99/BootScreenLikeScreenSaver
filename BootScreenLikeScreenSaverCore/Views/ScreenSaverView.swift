@@ -67,7 +67,7 @@ struct ScreenSaverView: View {
                 ZStack(alignment: .leading) {
                     Capsule()
                         .stroke(style: StrokeStyle(lineWidth: 8, lineCap: .round))
-                        .frame(width: ConfigurationManager.timerBarRange.upperBound)
+                        .frame(width: ConfigurationManager.durationTimerBarRange.upperBound)
                         .foregroundStyle(.gray)
 
                     Capsule()

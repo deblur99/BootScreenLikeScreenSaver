@@ -54,30 +54,7 @@ struct ContentView: View {
                 }
             }
             
-            // 전체화면 on/off 옵저버
-//            .onReceive(NotificationCenter.default.publisher(for: NSWindow.didEnterFullScreenNotification)) { _ in
-//                isFullScreen = true
-//                isShowingSettingsRightSidebar = false
-//            }
-//            .onReceive(NotificationCenter.default.publisher(for: NSWindow.didExitFullScreenNotification)) { _ in
-//                isFullScreen = false
-//                isShowingSettingsRightSidebar = true
-//            }
-            // ctrl + cmd + f 단축키 이벤트 처리
-//            .onReceive(NotificationCenter.default.publisher(for: .toggleFullScreen)) { _ in
-//                DispatchQueue.main.async {
-//                    NSApplication.shared.windows.first?.toggleFullScreen(nil)
-//                }
-//            }
-            // cmd + , 단축키 이벤트 처리
-//            .onReceive(NotificationCenter.default.publisher(for: .openSettings)) { _ in
-//                if !isFullScreen {
-//                    toggleRightSidebar()
-//                }
-//            }
-            
             // environmentObject
-            // TODO: 전체화면 중 마우스로 툴바 영역 가리킬 시 툴바 표시하기
             .environmentObject(configurationManager)
         }
     }
