@@ -7,13 +7,41 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		610DD6B22D4101D1002F45EF /* BootScreenLikeScreenSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BootScreenLikeScreenSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61A5750B2D4884C900F8E6D0 /* BootScreenLikeScreenSaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BootScreenLikeScreenSaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		61A575102D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BootScreenLikeScreenSaver-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		61A575572D488CA800F8E6D0 /* Exceptions for "BootScreenLikeScreenSaverCore" folder in "BootScreenLikeScreenSaver-iOS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Configs/AppConfiguration.swift,
+				Configs/Configuration.swift,
+				Configs/NotificationName.swift,
+				Views/ScreenSaverView.swift,
+				Views/SettingView.swift,
+			);
+			target = 61A5750F2D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		610DD6B42D4101D1002F45EF /* BootScreenLikeScreenSaver */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BootScreenLikeScreenSaver;
+			sourceTree = "<group>";
+		};
+		61A575112D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "BootScreenLikeScreenSaver-iOS";
+			sourceTree = "<group>";
+		};
+		61A575242D4889F600F8E6D0 /* BootScreenLikeScreenSaverCore */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				61A575572D488CA800F8E6D0 /* Exceptions for "BootScreenLikeScreenSaverCore" folder in "BootScreenLikeScreenSaver-iOS" target */,
+			);
+			path = BootScreenLikeScreenSaverCore;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -26,23 +54,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61A5750D2D48896300F8E6D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		610DD6A92D4101D1002F45EF = {
 			isa = PBXGroup;
 			children = (
+				61A575242D4889F600F8E6D0 /* BootScreenLikeScreenSaverCore */,
 				610DD6B42D4101D1002F45EF /* BootScreenLikeScreenSaver */,
-				610DD6B32D4101D1002F45EF /* Products */,
+				61A5750B2D4884C900F8E6D0 /* BootScreenLikeScreenSaver.app */,
+				61A575102D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS.app */,
+				61A575112D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS */,
 			);
-			sourceTree = "<group>";
-		};
-		610DD6B32D4101D1002F45EF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				610DD6B22D4101D1002F45EF /* BootScreenLikeScreenSaver.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -62,12 +92,35 @@
 			);
 			fileSystemSynchronizedGroups = (
 				610DD6B42D4101D1002F45EF /* BootScreenLikeScreenSaver */,
+				61A575242D4889F600F8E6D0 /* BootScreenLikeScreenSaverCore */,
 			);
 			name = BootScreenLikeScreenSaver;
 			packageProductDependencies = (
 			);
 			productName = BootScreenLikeScreenSaver;
-			productReference = 610DD6B22D4101D1002F45EF /* BootScreenLikeScreenSaver.app */;
+			productReference = 61A5750B2D4884C900F8E6D0 /* BootScreenLikeScreenSaver.app */;
+			productType = "com.apple.product-type.application";
+		};
+		61A5750F2D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 61A5751B2D48896400F8E6D0 /* Build configuration list for PBXNativeTarget "BootScreenLikeScreenSaver-iOS" */;
+			buildPhases = (
+				61A5750C2D48896300F8E6D0 /* Sources */,
+				61A5750D2D48896300F8E6D0 /* Frameworks */,
+				61A5750E2D48896300F8E6D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				61A575112D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS */,
+			);
+			name = "BootScreenLikeScreenSaver-iOS";
+			packageProductDependencies = (
+			);
+			productName = "BootScreenLikeScreenSaver-iOS";
+			productReference = 61A575102D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -83,6 +136,9 @@
 					610DD6B12D4101D1002F45EF = {
 						CreatedOnToolsVersion = 16.0;
 					};
+					61A5750F2D48896300F8E6D0 = {
+						CreatedOnToolsVersion = 16.0;
+					};
 				};
 			};
 			buildConfigurationList = 610DD6AD2D4101D1002F45EF /* Build configuration list for PBXProject "BootScreenLikeScreenSaver" */;
@@ -95,11 +151,12 @@
 			mainGroup = 610DD6A92D4101D1002F45EF;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 610DD6B32D4101D1002F45EF /* Products */;
+			productRefGroup = 610DD6A92D4101D1002F45EF;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				610DD6B12D4101D1002F45EF /* BootScreenLikeScreenSaver */,
+				61A5750F2D48896300F8E6D0 /* BootScreenLikeScreenSaver-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -112,10 +169,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		61A5750E2D48896300F8E6D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		610DD6AE2D4101D1002F45EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		61A5750C2D48896300F8E6D0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -255,14 +326,20 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BootScreenLikeScreenSaver/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "BSL Screen Saver";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.deblur.BootScreenLikeScreenSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -280,16 +357,85 @@
 				DEVELOPMENT_ASSET_PATHS = "\"BootScreenLikeScreenSaver/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "BSL Screen Saver";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.deblur.BootScreenLikeScreenSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		61A5751C2D48896400F8E6D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BootScreenLikeScreenSaver-iOS/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deblur.BootScreenLikeScreenSaver-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		61A5751D2D48896400F8E6D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BootScreenLikeScreenSaver-iOS/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.deblur.BootScreenLikeScreenSaver-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -310,6 +456,15 @@
 			buildConfigurations = (
 				610DD6C22D4101D3002F45EF /* Debug */,
 				610DD6C32D4101D3002F45EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		61A5751B2D48896400F8E6D0 /* Build configuration list for PBXNativeTarget "BootScreenLikeScreenSaver-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61A5751C2D48896400F8E6D0 /* Debug */,
+				61A5751D2D48896400F8E6D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

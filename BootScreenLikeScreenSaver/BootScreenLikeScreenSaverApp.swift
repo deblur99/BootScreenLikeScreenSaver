@@ -7,11 +7,76 @@
 
 import SwiftUI
 
+// MARK: - NotificationCenter 네임스페이스
+
+extension NSNotification.Name {
+    static let openSettings = Notification.Name("openSettings")
+    static let toggleFullScreen = Notification.Name("toggleFullScreen")
+}
+
 @main
 struct BootScreenLikeScreenSaverApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+//                .windowFullScreenBehavior(.automatic)
+                .frame(
+                    minWidth: AppConfiguration.defaultWindowSize.width,
+                    minHeight: AppConfiguration.defaultWindowSize.height
+                )
+                .onAppear {
+                    DispatchQueue.main.async {
+                        NSApplication.shared.windows.first?.center()
+                    }
+                }
+        }
+        .commands {
+            CommandGroup(after: .appSettings) {
+                self.getCommandButton(from: .openSettings)
+                self.getCommandButton(from: .toggleFullScreen)
+            }
+        }
+    }
+
+    private func getCommandButton(from notificationName: NSNotification.Name) -> some View {
+        let label: LocalizedStringKey = switch notificationName {
+        case .openSettings: "설정"
+        case .toggleFullScreen: "전체 화면 토글"
+        default: "레이블 텍스트 없음"
+        }
+
+        let shortcut: KeyEquivalent? = switch notificationName {
+        case .openSettings: ","
+        case .toggleFullScreen: "f"
+        default: nil
+        }
+
+        let modifiers: EventModifiers? = switch notificationName {
+        case .openSettings: .command
+        case .toggleFullScreen: [.control, .command]
+        default: nil
+        }
+
+        return Button(label) {
+            NotificationCenter.default.post(name: notificationName, object: nil)
+        }
+        .applyShortcut(shortcut, modifiers: modifiers)
+    }
+}
+
+// MARK: - Commands, 키보드 단축키 지정 View modifier
+
+extension Button {
+    @ViewBuilder
+    func applyShortcut(_ shortcut: KeyEquivalent?, modifiers: EventModifiers? = nil) -> some View {
+        if let shortcut {
+            if let modifiers {
+                self.keyboardShortcut(shortcut, modifiers: modifiers)
+            } else {
+                self.keyboardShortcut(shortcut)
+            }
+        } else {
+            self
         }
     }
 }
